@@ -25,7 +25,7 @@ void setup() {
   smooth(); // Enable anti-aliasing for shapes
 
   // Initialize serial communication on COM7 port at 9600 baud rate
-  myPort = new Serial(this, "COM7", 9600);
+  myPort = new Serial(this, "COM3", 9600);
   myPort.bufferUntil('.'); // Read data until '.' character is encountered
 }
 
@@ -149,7 +149,7 @@ void drawText() {
 
   // Draw the distance if within range
   if (iDistance < 40) {
-    text("        " + iDistance + " cm", width - width * 0.225, height - height * 0.0277);
+    text("Sonar - Ruben Rehal" + iDistance + " cm", width - width * 0.225, height - height * 0.0277);
   }
 
   textSize(25); // Set text size
