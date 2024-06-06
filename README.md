@@ -1,3 +1,5 @@
+# Sonar Detector
+
 The Sonar Detector Project is an innovative endeavor utilizing sonar technology to detect and map objects in a given environment. This project combines hardware and software to create a visual representation of the detected objects, providing valuable insights for various applications such as robotics, navigation, and security.
 
 Project Components
