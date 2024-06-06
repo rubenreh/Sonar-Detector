@@ -1,0 +1,72 @@
+//Author : Ruben Rehal
+//Date : June 6, 2024
+
+#include <Servo.h>  // Include the Servo library to control servo motor
+
+// Define pin numbers for the ultrasonic sensor
+#define trigPin 8
+#define echoPin 9
+
+// Variables to store duration and distance measurements
+long duration;
+int distance;
+
+// Create a Servo object to control a servo motor
+Servo myservo;
+
+// Function to calculate distance using the ultrasonic sensor
+int calculateDistance()
+{
+  // Clear the trigger pin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2); // Wait for 2 microseconds
+
+  // Set the trigger pin high for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10); // Wait for 10 microseconds
+  digitalWrite(trigPin, LOW); // Set the trigger pin low again
+
+  // Read the echo pin and calculate the distance based on the duration of the pulse
+  duration = pulseIn(echoPin, HIGH); 
+  distance = duration * 0.034 / 2; // Calculate the distance in cm
+  return distance; // Return the calculated distance
+}
+
+// Setup function to initialize pin modes and serial communication
+void setup()
+{
+  pinMode(trigPin, OUTPUT); // Set the trigger pin as an output
+  pinMode(echoPin, INPUT); // Set the echo pin as an input
+  myservo.attach(11); // Attach the servo motor to pin 11
+  Serial.begin(9600); // Begin serial communication at 9600 baud
+}
+
+// Main loop function
+void loop()
+{
+  int i; // Declare a variable for the loop counter
+  
+  // Sweep the servo from 15 to 165 degrees
+  for (i = 15; i <= 165; i++)
+  {
+    myservo.write(i); // Move the servo to the current angle
+    delay(15); // Wait for 15 milliseconds
+    calculateDistance(); // Call the function to calculate distance
+    Serial.print(i); // Print the current angle to the serial monitor
+    Serial.print(","); // Print a comma separator
+    Serial.print(distance); // Print the distance
+    Serial.print("."); // Print a period separator
+  }
+
+  // Sweep the servo from 165 to 15 degrees
+  for (i = 165; i >= 15; i--)
+  {
+    myservo.write(i); // Move the servo to the current angle
+    delay(15); // Wait for 15 milliseconds
+    calculateDistance(); // Call the function to calculate distance
+    Serial.print(i); // Print the current angle to the serial monitor
+    Serial.print(","); // Print a comma separator
+    Serial.print(distance); // Print the distance
+    Serial.print("."); // Print a period separator
+  }
+}
