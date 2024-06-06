@@ -1,3 +1,7 @@
+//Ruben Rehal
+//Date : June 6, 2024
+//Code is based off an incredible creator online, N_Tech : https://www.youtube.com/@n_tech3861
+
 import processing.serial.*; // Import library for serial communication
 import java.awt.event.KeyEvent; // Import library for reading data from the serial port
 import java.io.IOException;
