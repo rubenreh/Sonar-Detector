@@ -143,13 +143,13 @@ void drawText() {
 
   textSize(40); // Set text size
   // Draw the labels
-  text("N_Tech ", width - width * 0.875, height - height * 0.0277);
+  text("Sonar - Ruben Rehal", width - width * 0.875, height - height * 0.0277);
   text("Angle: " + iAngle + " ", width - width * 0.48, height - height * 0.0277);
   text("Distance: ", width - width * 0.26, height - height * 0.0277);
 
   // Draw the distance if within range
   if (iDistance < 40) {
-    text("Sonar - Ruben Rehal" + iDistance + " cm", width - width * 0.225, height - height * 0.0277);
+    text("     " + iDistance + " cm", width - width * 0.225, height - height * 0.0277);
   }
 
   textSize(25); // Set text size
